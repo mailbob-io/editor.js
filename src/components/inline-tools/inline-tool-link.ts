@@ -363,6 +363,11 @@ export default class LinkInlineTool implements InlineTool {
       return link;
     }
 
+    // If starts with a personalization tag, do nothing
+    if (/^\s*\{\{/.test(link)) {
+      return link;
+    }
+
     /**
      * We need to add missed HTTP protocol to the link, but skip 2 cases:
      *     1) Internal links like "/general"
